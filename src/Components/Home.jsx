@@ -10,10 +10,10 @@ const Weather = () => {
         <div className="location-section" key={data.measurement_id}>
           <p>Chicago, IL, USA</p>
           <p>
-            <b>Station:</b> {data.station_name}{" "}
+            <b>Station:</b> {data.station_name}
           </p>
           <p>
-            <b>Date {"&"} Time:</b> {data.measurement_timestamp_label}{" "}
+            <b>Date {"&"} Time:</b> {data.measurement_timestamp_label}
           </p>
         </div>
       ))}

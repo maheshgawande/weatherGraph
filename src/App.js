@@ -16,7 +16,7 @@ function App() {
           <Header />
           <div className="container">
             <Switch>
-              <Route path="/" exact component={Home} />>
+              <Route path="/" exact component={Home} />
               <Route path="/air-temperature" exact component={AirTemp} />
               <Route path="/humidity" exact component={Humidity} />
               <Route path="/wind-speed" exact component={WindSpeed} />
