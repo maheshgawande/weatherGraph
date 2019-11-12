@@ -6,16 +6,26 @@ import "chartjs-plugin-annotation";
 const Graph = ({ Data, meanValue, labelName, annotation }) => {
   const [cityInfo] = useContext(CityContext);
 
-  const labels = cityInfo
-    .slice(0, 6)
-    .map(data => data.measurement_timestamp_label);
+  const labels = cityInfo.slice(0, 6).map(data =>
+    data.measurement_timestamp_label
+      .split("")
+      .slice(11, 18)
+      .join("")
+  );
+
+  const asOnDate = cityInfo.slice(0, 1).map(data =>
+    data.measurement_timestamp_label
+      .split("")
+      .slice(0, 10)
+      .join("")
+  );
 
   const data = {
     labels: labels,
     datasets: [
       {
         data: Data,
-        label: `${labelName} in Chicago city`,
+        label: `${labelName} in Chicago city (as on ${asOnDate})`,
         fill: true,
         backgroundColor: "rgba(255,135,0,0.1)",
         lineTension: 0.1,
@@ -32,7 +42,8 @@ const Graph = ({ Data, meanValue, labelName, annotation }) => {
         pointHoverBorderColor: "rgba(220,220,220,1)",
         pointHoverBorderWidth: 2,
         pointRadius: 1,
-        pointHitRadius: 10
+        pointHitRadius: 10,
+        responsive: true
       }
     ]
   };

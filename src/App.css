@@ -62,7 +62,6 @@
 .card {
   width: 800px;
   height: 425px;
-  margin: 0 auto;
   padding: 10px 20px;
   border-radius: 20px;
   border-color: #f1f3f6;
@@ -70,10 +69,10 @@
   box-shadow: 30px 30px 80px rgba(55, 84, 170, 8%),
     -30px -30px 80px rgba(255, 255, 255, 100%),
     inset 4px 4px 20px rgba(255, 255, 255, 50%);
-  position: relative;
 }
 .home .location-section p:nth-child(1) {
   font-size: 2.4rem;
+  line-height: 1.5;
 }
 .home .data-section {
   width: 100%;
@@ -94,6 +93,7 @@
 }
 .home .data-section .temp-data span:nth-child(1) {
   font-size: 5rem;
+  line-height: 1.5;
 }
 .home .data-section .temp-data span:nth-child(2) {
   margin-top: -35px;
@@ -106,4 +106,49 @@
   padding-left: 10%;
   font-size: 18px;
   line-height: 1.6;
+}
+/*--- Media queries ---*/
+@media screen and (max-width: 870px) {
+  .card {
+    width: 600px;
+    height: 225px;
+    padding: 0px;
+  }
+  .home {
+    padding: 10px 20px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .header {
+    height: auto;
+    flex-direction: column;
+    line-height: 2;
+  }
+  .nav {
+    list-style-type: disc;
+    padding-left: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav a {
+    font-size: 1.4rem;
+  }
+  canvas {
+    margin: auto;
+    width: 590px !important;
+    height: 215px !important;
+  }
+}
+@media screen and (max-width: 720px) {
+  .card {
+    width: auto;
+    height: auto;
+  }
+  .home .data-section {
+    flex-direction: column;
+  }
+  .home .data-section .weather-data {
+    padding-left: 0;
+    line-height: 1.5;
+  }
 }
