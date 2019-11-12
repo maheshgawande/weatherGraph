@@ -55,7 +55,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #aaa;
+  background-color: #f2f3f7;
   position: relative;
 }
 /*--- Home ---*/
@@ -63,10 +63,13 @@
   width: 800px;
   height: 425px;
   margin: 0 auto;
-  padding: 8px 20px;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 5px 8px 5px #888;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border-color: #f1f3f6;
+  background-color: #f1f3f6;
+  box-shadow: 30px 30px 80px rgba(55, 84, 170, 8%),
+    -30px -30px 80px rgba(255, 255, 255, 100%),
+    inset 4px 4px 20px rgba(255, 255, 255, 50%);
   position: relative;
 }
 .home .location-section p:nth-child(1) {

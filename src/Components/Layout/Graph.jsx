@@ -7,8 +7,8 @@ const Graph = ({ Data, meanValue, labelName, annotation }) => {
   const [cityInfo] = useContext(CityContext);
 
   const labels = cityInfo
-    .map(data => data.measurement_timestamp_label)
-    .slice(0, 6);
+    .slice(0, 6)
+    .map(data => data.measurement_timestamp_label);
 
   const data = {
     labels: labels,
@@ -16,9 +16,10 @@ const Graph = ({ Data, meanValue, labelName, annotation }) => {
       {
         data: Data,
         label: `${labelName} in Chicago city`,
-        fill: false,
+        fill: true,
+        backgroundColor: "rgba(255,135,0,0.1)",
         lineTension: 0.1,
-        borderColor: "#ff8700",
+        borderColor: "rgba(255,135,0,1)",
         borderCapStyle: "round",
         borderDash: [],
         borderDashOffset: 0.0,
@@ -40,7 +41,7 @@ const Graph = ({ Data, meanValue, labelName, annotation }) => {
       annotations: [
         {
           drawTime: "afterDatasetsDraw",
-          borderColor: "#000",
+          borderColor: "#333",
           borderDash: [2, 2],
           borderWidth: 2,
           mode: "horizontal",
