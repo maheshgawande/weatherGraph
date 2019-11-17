@@ -7,6 +7,7 @@ import Home from "Components/Home";
 import AirTemp from "Components/AirTemp";
 import Humidity from "Components/Humidity";
 import WindSpeed from "Components/WindSpeed";
+import Error404 from "Components/Pages/Error404";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
               <Route path="/air-temperature" exact component={AirTemp} />
               <Route path="/humidity" exact component={Humidity} />
               <Route path="/wind-speed" exact component={WindSpeed} />
+              <Route component={Error404} />
             </Switch>
           </div>
         </div>

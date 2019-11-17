@@ -13,12 +13,14 @@ const Humidity = () => {
   };
 
   return (
-    <Graph
-      Data={tempData}
-      meanValue={mean()}
-      labelName="Humidity"
-      annotation={mean()}
-    />
+    <div className="card">
+      <Graph
+        Data={tempData}
+        meanValue={mean()}
+        labelName="Humidity"
+        annotation={mean()}
+      />
+    </div>
   );
 };
 

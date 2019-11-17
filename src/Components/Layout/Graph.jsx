@@ -80,11 +80,7 @@ const Graph = ({ Data, meanValue, labelName, annotation }) => {
     maintainAspectRatio: true
   };
 
-  return (
-    <div className="card">
-      <Line data={data} options={options} />
-    </div>
-  );
+  return <Line data={data} options={options} />;
 };
 
 export default Graph;

@@ -50,16 +50,14 @@
 }
 /*--- Container ---*/
 .container {
-  width: 100vw;
-  height: calc(100vh - 55px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 0;
   background-color: #f2f3f7;
   position: relative;
 }
 /*--- Home ---*/
 .card {
+  margin: 100px auto 0 auto;
   width: 800px;
   height: 425px;
   padding: 10px 20px;

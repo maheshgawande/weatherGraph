@@ -6,8 +6,8 @@ const AirTemp = () => {
   const [cityInfo] = useContext(CityContext);
 
   const tempData = cityInfo
-    .map(data => parseFloat(data.air_temperature))
-    .slice(0, 6);
+    .slice(0, 6)
+    .map(data => parseFloat(data.air_temperature));
 
   const mean = () => {
     let total = tempData.reduce((pre, i) => pre + i, 0);
@@ -15,12 +15,14 @@ const AirTemp = () => {
   };
 
   return (
-    <Graph
-      Data={tempData}
-      meanValue={mean()}
-      labelName="Air Temperature"
-      annotation={mean()}
-    />
+    <div className="card">
+      <Graph
+        Data={tempData}
+        meanValue={mean()}
+        labelName="Air Temperature"
+        annotation={mean()}
+      />
+    </div>
   );
 };
 

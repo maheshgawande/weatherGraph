@@ -15,12 +15,14 @@ const WindSpeed = () => {
   };
 
   return (
-    <Graph
-      Data={tempData}
-      meanValue={mean()}
-      labelName="Wind Speed"
-      annotation={mean()}
-    />
+    <div className="card">
+      <Graph
+        Data={tempData}
+        meanValue={mean()}
+        labelName="Wind Speed"
+        annotation={mean()}
+      />
+    </div>
   );
 };
 
