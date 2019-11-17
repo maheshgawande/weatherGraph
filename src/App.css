@@ -51,15 +51,14 @@
 /*--- Container ---*/
 .container {
   min-height: 100vh;
-  padding: 40px 0;
+  padding: 100px 0 50px 0;
   background-color: #f2f3f7;
   position: relative;
 }
 /*--- Home ---*/
 .card {
-  margin: 100px auto 0 auto;
-  width: 800px;
-  height: 425px;
+  margin: 0 auto;
+  width: 55vw;
   padding: 10px 20px;
   border-radius: 20px;
   border-color: #f1f3f6;
@@ -68,16 +67,23 @@
     -30px -30px 80px rgba(255, 255, 255, 100%),
     inset 4px 4px 20px rgba(255, 255, 255, 50%);
 }
+canvas {
+  margin: 0 auto;
+}
+.home canvas {
+  padding-top: 10px;
+  border-top: solid #333 1px;
+  margin-top: 5px;
+}
 .home .location-section p:nth-child(1) {
   font-size: 2.4rem;
   line-height: 1.5;
 }
 .home .data-section {
-  width: 100%;
-  height: 65%;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 .home .data-section .temp-data,
 .home .data-section .weather-data {
@@ -88,6 +94,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-right: solid #888 1px;
 }
 .home .data-section .temp-data span:nth-child(1) {
   font-size: 5rem;
@@ -97,6 +104,7 @@
   margin-top: -35px;
 }
 .home .data-section .weather-data {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

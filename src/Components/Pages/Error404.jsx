@@ -5,7 +5,7 @@ const Error404 = () => {
   return (
     <div className="card">
       <p style={{ fontSize: "2.2rem", lineHeight: 1.5 }}>
-        Looks like you landed on wrong page!
+        Looks like you landed on wrong page, mate!
       </p>
       <Link to="/">Go to home</Link>
     </div>

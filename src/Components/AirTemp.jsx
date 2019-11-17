@@ -10,7 +10,7 @@ const AirTemp = () => {
     .map(data => parseFloat(data.air_temperature));
 
   const mean = () => {
-    let total = tempData.reduce((pre, i) => pre + i, 0);
+    let total = tempData.reduce((prev, i) => prev + i, 0);
     return (total / tempData.length).toFixed(2);
   };
 
