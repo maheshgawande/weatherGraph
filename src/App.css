@@ -51,24 +51,28 @@
 /*--- Container ---*/
 .container {
   min-height: 100vh;
-  padding: 100px 0 50px 0;
+  padding: 5vh 0;
   background-color: #f2f3f7;
   position: relative;
 }
 /*--- Home ---*/
 .card {
   margin: 0 auto;
-  width: 55vw;
+  width: 60vw;
   padding: 10px 20px;
   border-radius: 20px;
   border-color: #f1f3f6;
   background-color: #f1f3f6;
-  box-shadow: 30px 30px 80px rgba(55, 84, 170, 8%),
-    -30px -30px 80px rgba(255, 255, 255, 100%),
+  box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2), -4px -4px 10px rgba(0, 0, 0, 0.2),
     inset 4px 4px 20px rgba(255, 255, 255, 50%);
+  /* overflow: hidden; */
 }
 canvas {
   margin: 0 auto;
+}
+.graph {
+  margin-top: 20px;
+  overflow: auto;
 }
 .home canvas {
   padding-top: 10px;
@@ -114,17 +118,9 @@ canvas {
   line-height: 1.6;
 }
 /*--- Media queries ---*/
-@media screen and (max-width: 870px) {
+@media screen and (max-width: 1270px) {
   .card {
-    width: 600px;
-    height: 225px;
-    padding: 0px;
-  }
-  .home {
-    padding: 10px 20px;
-  }
-  canvas {
-    height: 225px !important;
+    width: 90vw;
   }
 }
 @media screen and (max-width: 720px) {
@@ -142,26 +138,24 @@ canvas {
   .nav a {
     font-size: 1.4rem;
   }
+  .graph {
+    width: 100vw;
+  }
   canvas {
     margin: auto;
-    width: 590px !important;
-    height: 215px !important;
+    width: auto !important;
+    height: auto !important;
   }
 }
-@media screen and (max-width: 720px) {
-  .card {
-    width: auto;
-    height: auto;
-    overflow: auto;
-  }
+@media screen and (max-width: 500px) {
   .home .data-section {
     flex-direction: column;
+  }
+  .home .data-section .temp-data {
+    border: none;
   }
   .home .data-section .weather-data {
     padding-left: 0;
     line-height: 1.5;
-  }
-  canvas {
-    height: 275px !important;
   }
 }

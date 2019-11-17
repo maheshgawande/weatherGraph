@@ -7,7 +7,7 @@ const Weather = () => {
   const [weatherData] = useContext(CityContext);
   /*---------------*/
 
-  /*--- Global ---*/
+  /*--- Station data ---*/
   const fosterStation = [];
   const oakStreetStation = [];
   const street63rdStation = [];
@@ -38,6 +38,8 @@ const Weather = () => {
   /*---------------------*/
 
   /*--- Average cumulative algo ---*/
+  const labels = [];
+
   const cumulative = APIdata => {
     const Dates = APIdata.map(data =>
       data.measurement_timestamp
@@ -59,6 +61,8 @@ const Weather = () => {
       (prev, i) => parseInt(prev) + parseInt(i),
       0
     );
+
+    labels.push(APIdata.slice(0, 1).map(data => data.station_name));
     return (total / toBeCalc[0].length).toFixed(2);
   };
   /*---------------------------------*/
@@ -75,11 +79,8 @@ const Weather = () => {
   cumulativeData.push(oakStreetCumulative);
   cumulativeData.push(street63rdCumulative);
 
-  const labels = [
-    "Foster station",
-    "Oak street station",
-    "63rd street station"
-  ];
+  const newSortedDataArray = cumulativeData.map(data => data).sort();
+  const minValue = newSortedDataArray[0];
 
   const dt = new Date();
   const asOnDate =
@@ -91,23 +92,11 @@ const Weather = () => {
       {
         data: cumulativeData,
         label: `Average cumulative air temperature in Chicago city (From ${asOnDate} to ${last30thDay})`,
-        fill: true,
-        backgroundColor: "rgba(255,135,0,1)",
-        lineTension: 0.1,
+        backgroundColor: "rgba(255,135,0,0.6)",
         borderColor: "rgba(255,135,0,1)",
-        borderCapStyle: "round",
-        borderDash: [],
-        borderDashOffset: 0.0,
-        borderJoinStyle: "bevel",
-        pointBorderColor: "rgba(75,192,192,1)",
-        pointBackgroundColor: "#fff",
-        pointBorderWidth: 5,
-        pointHoverRadius: 5,
-        pointHoverBackgroundColor: "rgba(75,192,192,1)",
-        pointHoverBorderColor: "rgba(220,220,220,1)",
-        pointHoverBorderWidth: 2,
-        pointRadius: 1,
-        pointHitRadius: 10,
+        borderWidth: 1,
+        hoverBackgroundColor: "rgba(255,135,0,0.4)",
+        hoverBorderColor: "rgba(255,99,132,1)",
         responsive: true
       }
     ]
@@ -118,7 +107,7 @@ const Weather = () => {
       yAxes: [
         {
           ticks: {
-            beginAtZero: false
+            min: minValue - 0.5
           }
         }
       ]
@@ -127,42 +116,46 @@ const Weather = () => {
   /*------------------*/
 
   return (
-    <div className="card home">
-      {weatherData.slice(0, 1).map(data => (
-        <div className="location-section" key={data.measurement_id}>
-          <p>Chicago, IL, USA</p>
-          <p>
-            <b>Station:</b> {data.station_name}
-          </p>
-          <p>
-            <b>Date {"&"} Time:</b> {data.measurement_timestamp_label}
-          </p>
+    <div>
+      <div className="card home">
+        {weatherData.slice(0, 1).map(data => (
+          <div className="location-section" key={data.measurement_id}>
+            <p>Chicago, IL, USA</p>
+            <p>
+              <b>Station:</b> {data.station_name}
+            </p>
+            <p>
+              <b>Date {"&"} Time:</b> {data.measurement_timestamp_label}
+            </p>
+          </div>
+        ))}
+        <div className="data-section">
+          {weatherData.slice(0, 1).map(data => (
+            <div className="temp-data" key={data.measurement_id}>
+              <span> {parseInt(data.air_temperature)} </span>
+              <span>
+                <i>deg</i>
+              </span>
+            </div>
+          ))}
+          {weatherData.slice(0, 1).map(data => (
+            <div className="weather-data" key={data.measurement_id}>
+              <p>
+                <b>Barometric Pressure:</b> {data.barometric_pressure}
+              </p>
+              <p>
+                <b>Humidity:</b> {data.humidity}
+              </p>
+              <p>
+                <b>Wind speed:</b> {data.wind_speed} mph
+              </p>
+            </div>
+          ))}
         </div>
-      ))}
-      <div className="data-section">
-        {weatherData.slice(0, 1).map(data => (
-          <div className="temp-data" key={data.measurement_id}>
-            <span> {parseInt(data.air_temperature)} </span>
-            <span>
-              <i>deg</i>
-            </span>
-          </div>
-        ))}
-        {weatherData.slice(0, 1).map(data => (
-          <div className="weather-data" key={data.measurement_id}>
-            <p>
-              <b>Barometric Pressure:</b> {data.barometric_pressure}
-            </p>
-            <p>
-              <b>Humidity:</b> {data.humidity}
-            </p>
-            <p>
-              <b>Wind speed:</b> {data.wind_speed} mph
-            </p>
-          </div>
-        ))}
       </div>
-      <Bar data={data} options={options} />
+      <div className="card graph">
+        <Bar data={data} options={options} />
+      </div>
     </div>
   );
 };
