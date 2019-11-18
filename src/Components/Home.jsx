@@ -79,8 +79,8 @@ const Weather = () => {
   cumulativeData.push(oakStreetCumulative);
   cumulativeData.push(street63rdCumulative);
 
-  const newSortedDataArray = cumulativeData.map(data => data).sort();
-  const minValue = newSortedDataArray[0];
+  const newSortedData = cumulativeData.map(data => data).sort();
+  const minValue = newSortedData[0];
 
   const dt = new Date();
   const asOnDate =

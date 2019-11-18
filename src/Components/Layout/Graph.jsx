@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
-import { CityContext } from "Components/CityContext";
+import { StationContext } from "Components/StationList";
 import { Line } from "react-chartjs-2";
 import "chartjs-plugin-annotation";
 
-const Graph = ({ Data, meanValue, labelName, annotation }) => {
-  const [cityInfo] = useContext(CityContext);
+const Graph = ({ Data, meanValue, labelName, annotation, stationName }) => {
+  const [cityInfo] = useContext(StationContext);
 
   const labels = cityInfo.slice(0, 6).map(data =>
     data.measurement_timestamp_label
@@ -20,7 +20,9 @@ const Graph = ({ Data, meanValue, labelName, annotation }) => {
       .join("")
   );
 
-  const stationName = cityInfo.slice(0, 1).map(data => data.station_name);
+  const newSortedData = Data.map(d => d).sort();
+  let minValue = newSortedData[0];
+  minValue = minValue - 5 < 0 ? minValue : minValue - 0.5;
 
   const data = {
     labels: labels,
@@ -75,6 +77,15 @@ const Graph = ({ Data, meanValue, labelName, annotation }) => {
             yAdjust: 0,
             enabled: true,
             content: `mean: ${annotation}`
+          }
+        }
+      ]
+    },
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            min: minValue
           }
         }
       ]
