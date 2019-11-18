@@ -3,10 +3,8 @@ import { Link } from "react-router-dom";
 
 const Error404 = () => {
   return (
-    <div className="card">
-      <p style={{ fontSize: "2.2rem", lineHeight: 1.5 }}>
-        Looks like you landed on wrong page, mate!
-      </p>
+    <div className="card error-block">
+      <p>Error 404! Page not found.</p>
       <Link to="/">Go to home</Link>
     </div>
   );

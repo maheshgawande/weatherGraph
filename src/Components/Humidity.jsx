@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { CityContext } from "Components/CityContext";
 import Graph from "Components/Layout/Graph";
+import StationList from "Components/StationList";
 
 const Humidity = () => {
   const [cityInfo] = useContext(CityContext);
@@ -13,7 +14,8 @@ const Humidity = () => {
   };
 
   return (
-    <div className="card">
+    <div className="card graph">
+      <StationList />
       <Graph
         Data={tempData}
         meanValue={mean()}

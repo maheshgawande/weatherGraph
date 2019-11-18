@@ -20,12 +20,14 @@ const Graph = ({ Data, meanValue, labelName, annotation }) => {
       .join("")
   );
 
+  const stationName = cityInfo.slice(0, 1).map(data => data.station_name);
+
   const data = {
     labels: labels,
     datasets: [
       {
         data: Data,
-        label: `${labelName} in Chicago city (as on ${asOnDate})`,
+        label: `${labelName} in ${stationName} Chicago city (as on ${asOnDate})`,
         fill: true,
         backgroundColor: "rgba(255,135,0,0.1)",
         lineTension: 0.1,
